@@ -25,7 +25,7 @@ CREATE TABLE Cards (
 CREATE TABLE Games (
     game_id CHAR(10) NOT NULL,
     game_date DATE NULL,
-    game_duration TIME NULL,
+    game_duration INT NULL,
     game_winner CHAR(10) NULL
 );
 
@@ -40,7 +40,7 @@ ALTER TABLE Cards ADD PRIMARY KEY (card_id);
 ALTER TABLE Games ADD PRIMARY KEY (game_id);
 ALTER TABLE Games_Vs_Users ADD PRIMARY KEY (game_id, user_id);
 
-ALTER TABLE Users ADD FOREIGN KEY (user_id) REFERENCES Collection (user_id);
+ALTER TABLE collection ADD FOREIGN KEY (user_id) REFERENCES users (user_id);
 ALTER TABLE Games_Vs_Users ADD FOREIGN KEY (user_id) REFERENCES Users (user_id);
 ALTER TABLE Games_Vs_Users ADD FOREIGN KEY (game_id) REFERENCES games (game_id);
 ALTER TABLE Collection ADD FOREIGN KEY (card_id) REFERENCES cards (card_id);
