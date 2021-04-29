@@ -2,20 +2,30 @@
 
 ## JANUARY
 
-- Databases
-- SQL in 10 minutes
-- Designing an application
+- ~~Databases~~
+- ~~SQL in 10 minutes~~
+- ~~Writing some stories~~
 
 ## FEB
 
-- Choose a C# book or course
-- Do some basic C# exercises (FizzBuzz etc..)
-- Spend Time going through the book/course.
+- ~~Choose a C# book or course~~
+- ~~Do some basic C# exercises (FizzBuzz etc..)~~
+- ~~Spend Time going through the book/course.~~
 
 ## MAR
 
-- See how we are doing with the book
-- Start on the CRUD API forthe top trumps game
+- Worked through book and worked on Arrays
+
+## APR
+
+- Finish Chapter 4
+- Sketch our first screen (list of cards)
+
+## MAY
+
+- Look at Blazor APP
+- Do course??
+- if time start building the top trumps app.
 
 ## Q2 - APR - JUN
 
