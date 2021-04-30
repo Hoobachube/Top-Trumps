@@ -1,0 +1,47 @@
+﻿@page "/cards"
+@using TopTrumps.Data.DTOs
+@using TopTrumps.Data.Services
+
+@inject ICardsService _cardsService
+
+@attribute [Authorize(Roles = "Admin")]
+
+<h3>
+    Cards
+</h3>
+
+<table>
+    <tr>
+        <th>Card Id</th>
+        <th>Card Name</th>
+        <th>Card Type</th>
+        <th>Card ABV</th>
+        <th>Card Accessibility</th>
+        <th>Card Reputation</th>
+        <th>Card Popularity</th>
+        <th>Card Description</th>
+    </tr>
+    @foreach (var card in _cards)
+    {
+        <tr>
+            <td>@card.Id</td>
+            <td>@card.Name</td>
+            <td>@card.Type</td>
+            <td>@card.ABV</td>
+            <td>@card.Accessibility</td>
+            <td>@card.Reputation</td>
+            <td>@card.Popularity</td>
+            <td>@card.Description</td>
+        </tr>
+    }
+</table>
+
+@code
+{
+    private IEnumerable<Card> _cards = new List<Card>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _cards = await _cardsService.GetAllCards();
+    }
+}

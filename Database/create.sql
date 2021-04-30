@@ -1,4 +1,3 @@
-
 CREATE TABLE Users (
     user_id CHAR(10) NOT NULL,
     user_email CHAR(255) NOT NULL,
@@ -44,4 +43,3 @@ ALTER TABLE collection ADD FOREIGN KEY (user_id) REFERENCES users (user_id);
 ALTER TABLE Games_Vs_Users ADD FOREIGN KEY (user_id) REFERENCES Users (user_id);
 ALTER TABLE Games_Vs_Users ADD FOREIGN KEY (game_id) REFERENCES games (game_id);
 ALTER TABLE Collection ADD FOREIGN KEY (card_id) REFERENCES cards (card_id);
-
