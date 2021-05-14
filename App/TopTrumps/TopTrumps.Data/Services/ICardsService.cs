@@ -6,8 +6,14 @@
 
     public interface ICardsService
     {
+        Task<Card> GetCard(int id);
+
         Task<IEnumerable<Card>> GetAllCards();
 
         Task<IEnumerable<PlayersCard>> GetPlayersCollection(string email);
+
+        Task<int> CreateNewCard(Card card);
+
+        Task<Card> UpdateCard(Card card);
     }
 }

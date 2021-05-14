@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TopTrumps.Data", "TopTrumps
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TopTrumps.WebApp", "TopTrumps.WebApp\TopTrumps.WebApp.csproj", "{E510B50F-7456-4135-934A-1756C52F0E16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopTrumps.Data.Tests", "TopTrumps.Data.Tests\TopTrumps.Data.Tests.csproj", "{3F58A72E-5D60-4CAD-87D1-DF4B40E8201B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TopTrumps.Data.Tests", "TopTrumps.Data.Tests\TopTrumps.Data.Tests.csproj", "{3F58A72E-5D60-4CAD-87D1-DF4B40E8201B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

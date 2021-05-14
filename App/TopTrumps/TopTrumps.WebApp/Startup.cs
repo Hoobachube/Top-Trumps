@@ -1,6 +1,7 @@
 namespace TopTrumps.WebApp
 {
     using Areas.Identity;
+    using Blazored.Toast;
     using Data.DTOs;
     using Data.IOC;
     using Microsoft.AspNetCore.Builder;
@@ -30,6 +31,7 @@ namespace TopTrumps.WebApp
                 .AddDefaultTokenProviders()
                 .AddDefaultUI();
 
+            services.AddBlazoredToast();
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<User>>();

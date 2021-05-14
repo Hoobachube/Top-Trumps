@@ -1,0 +1,38 @@
+﻿@page "/cards/{id:int}"
+@using TopTrumps.Data.DTOs
+@using TopTrumps.Data.Services
+@using TopTrumps.WebApp.Components
+
+
+@inject ICardsService _cardsService
+@inject IToastService _toastService
+@inject NavigationManager NavigationManager
+
+@attribute [Authorize(Roles = "Admin")]
+
+<CardForm Card="@_card" OnSubmit="@(() => HandleValidSubmit())" />
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private Card _card = new Card();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var existingCard = await _cardsService.GetCard(Id);
+        if (existingCard != null)
+        {
+            _card = existingCard;
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        await _cardsService.UpdateCard(_card);
+
+        _toastService.ShowSuccess($"Card {_card.Name} Updated", "AWOOGA!");
+
+        NavigationManager.NavigateTo("/cards");
+    }
+}
