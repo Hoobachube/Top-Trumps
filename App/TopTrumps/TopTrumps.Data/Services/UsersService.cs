@@ -1,4 +1,6 @@
-﻿using TopTrumps.Data.Repository;
+﻿using System;
+using TopTrumps.Data.Helpers;
+using TopTrumps.Data.Repository;
 
 namespace TopTrumps.Data.Services
 {
@@ -20,41 +22,26 @@ namespace TopTrumps.Data.Services
         IUserRoleStore<User>
     {
         private readonly IRepository _repo;
+        private readonly ISqlHelper _helper;
+        private readonly IRoleStore<Role> _rolesStore;
 
-        public UsersService(IRepository repo)
+        public UsersService(IRepository repo, ISqlHelper helper, IRoleStore<Role> rolesStore)
         {
             _repo = repo;
+            _helper = helper;
+            _rolesStore = rolesStore;
         }
 
         public async Task<IdentityResult> CreateAsync(User user, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
-            var sql = $@"INSERT INTO [Users] 
-                            ([UserName], 
-                            [NormalizedUserName], 
-                            [Email], 
-                            [NormalizedEmail], 
-                            [EmailConfirmed], 
-                            [PasswordHash], 
-                            [PhoneNumber], 
-                            [PhoneNumberConfirmed], 
-                            [TwoFactorEnabled])
-                        VALUES 
-                            (@{nameof(User.UserName)}, 
-                            @{nameof(User.NormalizedUserName)}, 
-                            @{nameof(User.Email)},
-                            @{nameof(User.NormalizedEmail)}, 
-                            @{nameof(User.EmailConfirmed)}, 
-                            @{nameof(User.PasswordHash)},
-                            @{nameof(User.PhoneNumber)}, 
-                            @{nameof(User.PhoneNumberConfirmed)}, 
-                            @{nameof(User.TwoFactorEnabled)});
-                        SELECT CAST(SCOPE_IDENTITY() as int)";
 
-            await _repo.QuerySingleAsync<int>(
-                sql,
+            user.Id = await _repo.QuerySingleAsync<int>(
+                _helper.GetCreateUsersSql(),
                 cancellationToken,
                 user);
+
+            await AddToRoleAsync(user, "Player", cancellationToken);
 
             return IdentityResult.Success;
         }
@@ -230,29 +217,16 @@ namespace TopTrumps.Data.Services
 
         public async Task AddToRoleAsync(User user, string roleName, CancellationToken cancellationToken)
         {
-
-            var normalizedName = roleName.ToUpper();
-            var roleId = await _repo.ExecuteScalarAsync<int?>(
-                $"SELECT [Id] FROM [Roles] WHERE [NormalizedName] = @{nameof(normalizedName)}",
-                cancellationToken,
-                new { normalizedName });
-
-            if (!roleId.HasValue)
+            var role = await _rolesStore.FindByNameAsync(roleName, cancellationToken);
+            if (role == null)
             {
-                roleId = await _repo.ExecuteAsync(
-                    $"INSERT INTO [Roles]([Name], [NormalizedName]) VALUES(@{nameof(roleName)}, @{nameof(normalizedName)})",
-                    cancellationToken,
-                    new { roleName, normalizedName });
+                throw new Exception($"Role does not exist {roleName}");
             }
 
             await _repo.ExecuteAsync(
-                $@"IF NOT EXISTS(
-                            SELECT 1 FROM [UsersVsRoles] 
-                            WHERE [UserId] = @userId AND [RoleId] = @{nameof(roleId)}
-                        ) 
-                        INSERT INTO [UsersVsRoles]([UserId], [RoleId]) VALUES(@userId, @{nameof(roleId)})",
+                _helper.GetAddUserToRoleSql(role),
                 cancellationToken,
-                new { userId = user.Id, roleId });
+                new { userId = user.Id, role.Id });
         }
 
         public async Task RemoveFromRoleAsync(User user, string roleName, CancellationToken cancellationToken)
