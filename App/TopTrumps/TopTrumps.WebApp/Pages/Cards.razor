@@ -25,6 +25,7 @@
         <table>
             <tr>
                 <th>Card Id</th>
+                <th>Card Id</th>
                 <th>Card Name</th>
                 <th>Card Type</th>
                 <th>Card ABV</th>
@@ -37,6 +38,7 @@
             @foreach (var card in _cards)
             {
                 <tr>
+                    <td><img src="@card.ImageUrl" width="100" height="100"/></td>
                     <td>@card.Id</td>
                     <td>@card.Name</td>
                     <td>@card.Type</td>

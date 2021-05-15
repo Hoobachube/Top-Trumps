@@ -1,3 +1,5 @@
+using TopTrumps.Files.Services;
+
 namespace TopTrumps.WebApp
 {
     using Areas.Identity;
@@ -35,6 +37,8 @@ namespace TopTrumps.WebApp
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<User>>();
+
+            services.AddScoped<IFileService, AwsS3FileService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

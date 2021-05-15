@@ -25,6 +25,7 @@ namespace TopTrumps.Data.Helpers
 	                    C.[Reputation],
 	                    C.[Popularity],
 	                    C.[Description],
+                        C.[ImageUrl],
 	                    CT.[InDeck]
                     FROM [dbo].[Collection] CT
                     JOIN [dbo].[Cards] C ON CT.CardId = C.Id
@@ -41,7 +42,8 @@ namespace TopTrumps.Data.Helpers
                             ,[Accessibility]
                             ,[Reputation]
                             ,[Popularity]
-                            ,[Description])
+                            ,[Description]
+                            ,[ImageUrl])
                         VALUES 
                             (@{nameof(Card.Name)}, 
                             @{nameof(Card.Type)}, 
@@ -49,7 +51,8 @@ namespace TopTrumps.Data.Helpers
                             @{nameof(Card.Accessibility)}, 
                             @{nameof(Card.Reputation)}, 
                             @{nameof(Card.Popularity)},
-                            @{nameof(Card.Description)});
+                            @{nameof(Card.Description)},
+                            @{nameof(Card.ImageUrl)});
                         SELECT CAST(SCOPE_IDENTITY() as int)";
         }
 
@@ -62,7 +65,8 @@ namespace TopTrumps.Data.Helpers
                 [Accessibility] = @{nameof(Card.Accessibility)},
                 [Reputation] = @{nameof(Card.Reputation)},
                 [Popularity] = @{nameof(Card.Popularity)},
-                [Description] = @{nameof(Card.Description)}
+                [Description] = @{nameof(Card.Description)},
+                [ImageUrl] = @{nameof(Card.ImageUrl)}
                 WHERE [Id] = @{nameof(Card.Id)}";
         }
     }
