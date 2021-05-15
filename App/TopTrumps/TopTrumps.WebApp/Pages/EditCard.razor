@@ -10,7 +10,7 @@
 
 @attribute [Authorize(Roles = "Admin")]
 
-<CardForm Card="@_card" OnSubmit="@(() => HandleValidSubmit())" />
+<CardForm Card="@_card" OnSubmit="@(async () => await HandleValidSubmit())" />
 
 @code {
     [Parameter]

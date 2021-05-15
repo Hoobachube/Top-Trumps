@@ -1,11 +1,15 @@
 ﻿@using TopTrumps.Data.DTOs
+@using Amazon
+@using Amazon.S3
+@using Amazon.S3.Transfer
+@using System.IO
+@using Amazon.Runtime
 
-<div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-6">
-        <EditForm Model="@Card" OnValidSubmit="@InvokeSubmitMethod">
-            <DataAnnotationsValidator />
-            <ValidationSummary />
-
+<EditForm Model="@Card" OnValidSubmit="@InvokeSubmitMethod">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
             <div class="form-group">
                 <label for="name">Name</label>
                 <InputText id="name" @bind-Value="Card.Name" class="form-control" />
@@ -44,11 +48,22 @@
             <div class="text-right">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
-        </EditForm>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <img src="@Card.ImageUrl" alt="thumbnail" />
+            <InputFile OnChange="@(async (evt) => await UploadFileToS3(evt.File))"></InputFile>
+        </div>
     </div>
-</div>
+</EditForm>
+
 
 @code {
+
+    public class StreamData
+    {
+        public byte[] data { get; set; }
+        public string filename { get; set; }
+    }
 
     [Parameter]
     public Action OnSubmit { get; set; }
@@ -59,5 +74,33 @@
     private void InvokeSubmitMethod()
     {
         OnSubmit?.Invoke();
+    }
+
+    public async Task UploadFileToS3(IBrowserFile file)
+    {
+        var bucketName = "top-trumps-bucket";
+        var region = RegionEndpoint.EUWest2;
+        var credentials = new BasicAWSCredentials("AKIASV575ACDR246F6PH", "5eAgOKbiFM6YbCkHZFnH2S0qv07PTnZyUFvZEZm2");
+        var config = new AmazonS3Config
+        {
+            RegionEndpoint = region
+        };
+        using var client = new AmazonS3Client(credentials, config);
+
+        await using var newMemoryStream = new MemoryStream();
+        await using var readStream = file.OpenReadStream();
+
+        var uploadRequest = new TransferUtilityUploadRequest
+        {
+            InputStream = readStream,
+            Key = file.Name,
+            BucketName = "top-trumps-bucket",
+            CannedACL = S3CannedACL.PublicRead
+        };
+
+        var fileTransferUtility = new TransferUtility(client);
+        await fileTransferUtility.UploadAsync(uploadRequest);
+
+        Card.ImageUrl = $"https://{bucketName}.s3.{region.SystemName}.amazonaws.com/{file.Name}";
     }
 }

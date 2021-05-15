@@ -9,14 +9,14 @@
 
 @attribute [Authorize(Roles = "Admin")]
 
-<CardForm Card="@_card" OnSubmit="@(() => HandleValidSubmit())" />
+<CardForm Card="@_card" OnSubmit="@(async () => await HandleValidSubmit())" />
 
 @code {
     private Card _card = new Card();
 
-    private void HandleValidSubmit()
+    private async Task HandleValidSubmit()
     {
-        _cardsService.CreateNewCard(_card);
+        await _cardsService.CreateNewCard(_card);
 
         _toastService.ShowSuccess($"New card {_card.Name} Created", "WOOT!");
 
