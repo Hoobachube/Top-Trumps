@@ -1,11 +1,10 @@
-using TopTrumps.Files.Services;
-
 namespace TopTrumps.WebApp
 {
     using Areas.Identity;
     using Blazored.Toast;
     using Data.DTOs;
     using Data.IOC;
+    using Files.Services;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Components.Authorization;
     using Microsoft.AspNetCore.Hosting;

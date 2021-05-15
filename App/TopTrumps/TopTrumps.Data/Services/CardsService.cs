@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-
-namespace TopTrumps.Data.Services
+﻿namespace TopTrumps.Data.Services
 {
     using System.Collections.Generic;
     using System.Threading;

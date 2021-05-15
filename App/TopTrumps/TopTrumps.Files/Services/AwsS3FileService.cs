@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace TopTrumps.Files.Services
+﻿namespace TopTrumps.Files.Services
 {
+    using System;
     using System.IO;
     using System.Threading.Tasks;
     using Amazon;

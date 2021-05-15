@@ -61,7 +61,8 @@
             {
                 <img src="@Card.ImageUrl" alt="thumbnail" />
             }
-            <InputFile OnChange="@(async (evt) => await UploadFileToS3(evt.File))" class="btn btn-primary" />
+            <hr />
+            <InputFile OnChange="@(async (evt) => await UploadFileToS3(evt.File))" />
         </div>
     </div>
 </EditForm>

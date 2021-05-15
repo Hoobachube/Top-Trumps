@@ -1,7 +1,7 @@
-﻿using TopTrumps.Data.DTOs;
-
-namespace TopTrumps.Data.Helpers
+﻿namespace TopTrumps.Data.Helpers
 {
+    using DTOs;
+
     public class SqlHelper : ISqlHelper
     {
         public string GetCardQuery(int id)
