@@ -3,8 +3,7 @@
     using System;
     using System.IO;
     using System.Threading.Tasks;
-    using Amazon;
-    using Amazon.Runtime;
+    using Amazon.Runtime.CredentialManagement;
     using Amazon.S3;
     using Amazon.S3.Transfer;
     using Microsoft.Extensions.Configuration;
@@ -20,15 +19,15 @@
 
         public async Task<string> UploadFile(string fileName, Stream fileStream)
         {
-            var key = $"{Guid.NewGuid()}.{fileName}";
-            var region = RegionEndpoint.GetBySystemName(_configuration["Aws:Region"]);
-            var credentials = new BasicAWSCredentials(_configuration["AWS:AccessKey"], _configuration["AWS:SecretKey"]);
-            var config = new AmazonS3Config
+            var chain = new CredentialProfileStoreChain();
+            if (!chain.TryGetAWSCredentials("top_trumps", out var awsCredentials))
             {
-                RegionEndpoint = region
-            };
+                throw new Exception("AWS CREDENTIALS NOT FOUND");
+            }
 
-            using var client = new AmazonS3Client(credentials, config);
+            var key = $"{Guid.NewGuid()}.{fileName}";
+         
+            using var client = new AmazonS3Client(awsCredentials);
 
             var uploadRequest = new TransferUtilityUploadRequest
             {
