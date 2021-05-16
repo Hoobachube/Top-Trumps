@@ -1,0 +1,95 @@
+﻿@using TopTrumps.Data.DTOs
+@using Amazon
+@using Amazon.S3
+@using Amazon.S3.Transfer
+@using Amazon.Runtime
+@using TopTrumps.Files.Services
+
+@inject IFileService _fileService
+
+<EditForm Model="@Card" OnValidSubmit="@InvokeSubmitMethod">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <InputText id="name" @bind-Value="Card.Name" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="Type">Type</label>
+                <InputText id="Type" @bind-Value="Card.Type" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="ABV">ABV</label>
+                <InputNumber id="ABV" @bind-Value="Card.ABV" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="Accessibility">Accessibility</label>
+                <InputNumber id="Accessibility" @bind-Value="Card.Accessibility" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="Reputation">Reputation</label>
+                <InputNumber id="Reputation" @bind-Value="Card.Reputation" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="Popularity">Popularity</label>
+                <InputNumber id="Popularity" @bind-Value="Card.Popularity" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="Description">Description</label>
+                <InputTextArea id="Description" @bind-Value="Card.Description" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="ImageUrl">Image Url</label>
+                <input id="ImageUrl" name="ImageUrl" class="form-control valid" disabled type="text" value="@Card.ImageUrl" />
+            </div>
+
+            <div class="text-right">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            @if (!string.IsNullOrEmpty(Card.ImageUrl))
+            {
+                <img src="@Card.ImageUrl" alt="thumbnail" />
+            }
+            <hr />
+            <InputFile OnChange="@(async (evt) => await UploadFileToS3(evt.File))" />
+        </div>
+    </div>
+</EditForm>
+
+
+@code {
+
+    public class StreamData
+    {
+        public byte[] data { get; set; }
+        public string filename { get; set; }
+    }
+
+    [Parameter]
+    public Action OnSubmit { get; set; }
+
+    [Parameter]
+    public Card Card { get; set; }
+
+    private void InvokeSubmitMethod()
+    {
+        OnSubmit?.Invoke();
+    }
+
+    public async Task UploadFileToS3(IBrowserFile file)
+    {
+        await using var readStream = file.OpenReadStream();
+        Card.ImageUrl = await _fileService.UploadFile(file.Name, readStream);
+    }
+}

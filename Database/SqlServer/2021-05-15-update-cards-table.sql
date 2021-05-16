@@ -1,0 +1,2 @@
+ALTER TABLE [dbo].[Cards] 
+ADD ImageUrl VARCHAR(500) NULL;

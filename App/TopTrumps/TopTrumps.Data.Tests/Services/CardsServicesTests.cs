@@ -17,6 +17,47 @@ namespace TopTrumps.Data.Tests.Services
         private readonly Mock<ISqlHelper> _helper = new Mock<ISqlHelper>();
 
         [Fact]
+        public async Task GetCard_ShouldReturnUsersCard()
+        {
+            // Arrange
+            const int id = 1;
+            const string sql = "SELECT";
+            var expected = new Card();
+
+            _helper.Setup(x => x.GetCardQuery(id))
+                .Returns(sql);
+
+            _repo.Setup(x => x.QuerySingleAsync<Card>(sql, It.IsAny<CancellationToken>(), id))
+                .ReturnsAsync(expected);
+
+            // Act
+            var actual = await GetSubject().GetCard(id);
+
+            // Assert
+            Assert.Equal(actual, expected);
+        }
+
+        [Fact]
+        public async Task GetCard_ShouldReturnNull_IfCardNotFound()
+        {
+            // Arrange
+            const int id = 1;
+            const string sql = "SELECT";
+
+            _helper.Setup(x => x.GetCardQuery(id))
+                .Returns(sql);
+
+            _repo.Setup(x => x.QuerySingleAsync<Card>(sql, It.IsAny<CancellationToken>(), null))
+                .ReturnsAsync((Card)null);
+
+            // Act
+            var actual = await GetSubject().GetCard(id);
+
+            // Assert
+            Assert.Null(actual);
+        }
+
+        [Fact]
         public async Task GetAllCards_ShouldReturnAllCardsInTheDatabase()
         {
             // Arrange
@@ -32,7 +73,7 @@ namespace TopTrumps.Data.Tests.Services
             // Act
             var actual = await GetSubject().GetAllCards();
 
-            // assert
+            // Assert
             Assert.Equal(actual, expected);
         }
 
@@ -54,7 +95,29 @@ namespace TopTrumps.Data.Tests.Services
             // Act
             var actual = await GetSubject().GetPlayersCollection(email);
 
-            // assert
+            // Assert
+            Assert.Equal(actual, expected);
+        }
+
+        [Fact]
+        public async Task CreateNewCard_ShouldReturnNewCardId()
+        {
+            // Arrange
+            const string sql = "SELECT";
+            const int expected = 10;
+            var card = new Card();
+            var token = new CancellationToken();
+            
+            _helper.Setup(x => x.CreateNewCardSql())
+                .Returns(sql);
+
+            _repo.Setup(x => x.QuerySingleAsync<int>(sql, token, card))
+                .ReturnsAsync(expected);
+
+            // Act
+            var actual = await GetSubject().CreateNewCard(card);
+
+            // Assert
             Assert.Equal(actual, expected);
         }
 
