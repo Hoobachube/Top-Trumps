@@ -19,6 +19,29 @@
 </div>
 
 
+<div class="row">
+    @foreach (var card in _cards)
+    {
+        <div class="col-sm-4 col-md-3 mb-2">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="@card.ImageUrl" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@card.Name</h5>
+                    <p class="card-text">@card.Description</p>
+                    <NavLink class="btn btn-primary" href=@{$"cards/{card.Id}"}>
+                        Edit
+                    </NavLink>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+
+
+
+
 
 <div class="row">
     <div class="col-12">
@@ -38,7 +61,7 @@
             @foreach (var card in _cards)
             {
                 <tr>
-                    <td><img src="@card.ImageUrl" width="100" height="100"/></td>
+                    <td><img src="@card.ImageUrl" width="100" height="100" /></td>
                     <td>@card.Id</td>
                     <td>@card.Name</td>
                     <td>@card.Type</td>
