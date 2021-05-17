@@ -1,0 +1,25 @@
+﻿@page "/cards/new"
+@using TopTrumps.Data.DTOs
+@using TopTrumps.Data.Services
+@using TopTrumps.WebApp.Components
+
+@inject ICardsService _cardsService
+@inject IToastService _toastService
+@inject NavigationManager NavigationManager
+
+@attribute [Authorize(Roles = "Admin")]
+
+<CardForm Card="@_card" OnSubmit="@(async () => await HandleValidSubmit())" />
+
+@code {
+    private Card _card = new Card();
+
+    private async Task HandleValidSubmit()
+    {
+        await _cardsService.CreateNewCard(_card);
+
+        _toastService.ShowSuccess($"New card {_card.Name} Created", "WOOT!");
+
+        NavigationManager.NavigateTo("/cards");
+    }
+}

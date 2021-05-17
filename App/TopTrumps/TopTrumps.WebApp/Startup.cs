@@ -1,8 +1,10 @@
 namespace TopTrumps.WebApp
 {
     using Areas.Identity;
+    using Blazored.Toast;
     using Data.DTOs;
     using Data.IOC;
+    using Files.Services;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Components.Authorization;
     using Microsoft.AspNetCore.Hosting;
@@ -30,9 +32,12 @@ namespace TopTrumps.WebApp
                 .AddDefaultTokenProviders()
                 .AddDefaultUI();
 
+            services.AddBlazoredToast();
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<User>>();
+
+            services.AddScoped<IFileService, AwsS3FileService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
