@@ -19,7 +19,9 @@ namespace TopTrumps.Data.Services
         public async Task<IdentityResult> CreateAsync(Role role, CancellationToken cancellationToken)
         {
             await _repo.QuerySingleAsync<int>(
-                $@"INSERT INTO [Roles] ([Name], [NormalizedName]) VALUES (@{nameof(Role.Name)}, @{nameof(Role.NormalizedName)}); SELECT CAST(SCOPE_IDENTITY() as int)",
+                $@"INSERT INTO [Roles] ([Name], [NormalizedName]) 
+                   VALUES (@{nameof(Role.Name)}, @{nameof(Role.NormalizedName)}); 
+                   SELECT CAST(SCOPE_IDENTITY() as int)",
                 cancellationToken,
                 role);
 
