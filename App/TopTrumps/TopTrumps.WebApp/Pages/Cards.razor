@@ -22,19 +22,29 @@
 <div class="row">
     @foreach (var card in _cards)
     {
+
         <div class="col-sm-4 col-md-3 mb-2">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="@card.ImageUrl" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">@card.Name</h5>
-                    <p class="card-text">@card.Description</p>
-                    <NavLink class="btn btn-primary" href=@{$"cards/{card.Id}"}>
-                        Edit
-                    </NavLink>
+            <div class="card border-dark mb-3" style=" border: 9px solid black; max-width: 25rem; border-radius: .25rem;">
+                <div class="card text-center bg-success" style="border-radius: .25rem;">
+                    <div class="card text-black bg-success mb-3">
+                        <img class="card-img-top" src="@card.ImageUrl" alt="Card image cap">
+
+                        <div class="card-body">
+                            <h2 class="card-title">@card.Name</h2>
+                            <h3 class="card-type">@card.Type</h3>
+                            <p><h4 class="card-text">ABV = @card.ABV</h4></p>
+                            <p><h4 class="card-text">ACCESSIBILITY = @card.Accessibility</h4></p>
+                            <p><h4 class="card-text">REPUTATION = @card.Reputation</h4></p>
+                            <p><h4 class="card-text">POPULARITY = @card.Popularity</h4></p>
+                            <p class="card-description">@card.Description</p>
+                            <NavLink class="btn btn-primary" href=@{$"cards/{card.Id}"}>
+                                Edit
+                            </NavLink>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
     }
 </div>
 

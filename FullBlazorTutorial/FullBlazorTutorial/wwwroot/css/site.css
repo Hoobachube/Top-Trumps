@@ -181,15 +181,3 @@ app {
         display: block;
     }
 }
-.card-type {
-    color: yellow;
-}
-
-
-.card-text {
-    color: white;
-}
-
-.card-description {
-    border: 2px solid black;
-}
