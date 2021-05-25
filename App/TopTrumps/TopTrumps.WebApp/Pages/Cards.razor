@@ -17,6 +17,7 @@
         </NavLink>
     </div>
 </div>
+<br />
 
 
 <div class="row">
@@ -24,18 +25,18 @@
     {
 
         <div class="col-sm-4 col-md-3 mb-2">
-            <div class="card border-dark mb-3" style=" border: 9px solid black; max-width: 25rem; border-radius: .25rem;">
-                <div class="card text-center bg-success" style="border-radius: .25rem;">
-                    <div class="card text-black bg-success mb-3">
-                        <img class="card-img-top" src="@card.ImageUrl" alt="Card image cap">
+            <div class="card border-dark mb-3 card-border">
+                <div class="card text-center card-color">
+                    <div class="card text-black card-color mb-3">
+                        <img class="card-img-top" src="@card.ImageUrl" alt="Card image cap" width="35" height="150">
 
                         <div class="card-body">
-                            <h2 class="card-title">@card.Name</h2>
-                            <h3 class="card-type">@card.Type</h3>
-                            <p><h4 class="card-text">ABV = @card.ABV</h4></p>
-                            <p><h4 class="card-text">ACCESSIBILITY = @card.Accessibility</h4></p>
-                            <p><h4 class="card-text">REPUTATION = @card.Reputation</h4></p>
-                            <p><h4 class="card-text">POPULARITY = @card.Popularity</h4></p>
+                            <h4 class="card-title">@card.Name</h4>
+                            <h5 class="card-type">@card.Type</h5>
+                            <p><h6 class="card-text">ABV = @card.ABV</h6></p>
+                            <p><h6 class="card-text">ACCESSIBILITY = @card.Accessibility</h6></p>
+                            <p><h6 class="card-text">REPUTATION = @card.Reputation</h6></p>
+                            <p><h6 class="card-text">POPULARITY = @card.Popularity</h6></p>
                             <p class="card-description">@card.Description</p>
                             <NavLink class="btn btn-primary" href=@{$"cards/{card.Id}"}>
                                 Edit
@@ -53,43 +54,6 @@
 
 
 
-<div class="row">
-    <div class="col-12">
-        <table>
-            <tr>
-                <th>Card Id</th>
-                <th>Card Id</th>
-                <th>Card Name</th>
-                <th>Card Type</th>
-                <th>Card ABV</th>
-                <th>Card Accessibility</th>
-                <th>Card Reputation</th>
-                <th>Card Popularity</th>
-                <th>Card Description</th>
-                <th></th>
-            </tr>
-            @foreach (var card in _cards)
-            {
-                <tr>
-                    <td><img src="@card.ImageUrl" width="100" height="100" /></td>
-                    <td>@card.Id</td>
-                    <td>@card.Name</td>
-                    <td>@card.Type</td>
-                    <td>@card.ABV</td>
-                    <td>@card.Accessibility</td>
-                    <td>@card.Reputation</td>
-                    <td>@card.Popularity</td>
-                    <td>@card.Description</td>
-                    <td>
-                        <NavLink class="btn btn-primary" href=@{$"cards/{card.Id}"}>
-                            <span class="oi oi-home" aria-hidden="true"></span> Edit
-                        </NavLink>
-                    </td>
-                </tr>
-            }
-        </table>
-    </div>
-</div>
 
 @code
 {

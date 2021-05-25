@@ -181,15 +181,37 @@ app {
         display: block;
     }
 }
+
+.card-border {
+    border: 9px solid lightslategrey;
+    max-width: 25rem;
+    height: 520px;
+}
+
+.card-color {
+    color: lightslategrey;
+    background-color: darkblue;
+    height: 502px;
+    
+}
+
 .card-type {
-    color: yellow;
+    color: mediumorchid;
 }
 
 
 .card-text {
-    color: white;
+    color: mediumorchid;
 }
 
 .card-description {
     border: 2px solid black;
-}
+    white-space: nowrap;
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    }
+
+    .card-description:hover {
+        overflow: visible;
+    }
