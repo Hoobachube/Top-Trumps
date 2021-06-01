@@ -41,10 +41,10 @@ app {
             margin-left: 1.5rem;
         }
 
-.main .top-row a:first-child {
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+        .main .top-row a:first-child {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
 .sidebar {
     background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
@@ -129,12 +129,12 @@ app {
     z-index: 1000;
 }
 
-#blazor-error-ui .dismiss {
-    cursor: pointer;
-    position: absolute;
-    right: 0.75rem;
-    top: 0.5rem;
-}
+    #blazor-error-ui .dismiss {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+    }
 
 @media (max-width: 767.98px) {
     .main .top-row:not(.auth) {
@@ -192,26 +192,75 @@ app {
     color: lightslategrey;
     background-color: darkblue;
     height: 502px;
-    
 }
 
-.card-type {
-    color: mediumorchid;
-}
+
 
 
 .card-text {
-    color: mediumorchid;
+    color: #030100;
 }
 
 .card-description {
     border: 2px solid black;
+    text-align: center;
+    color: white;
+    line-height: 1.2em;
+}
+
+.truncate {
     white-space: nowrap;
-    width: 100px;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+    .truncate:hover {
+        overflow: visible;
+        text-wrap: initial;
     }
 
-    .card-description:hover {
-        overflow: visible;
-    }
+.top-trumps-card {
+    background-color: #2b2b2b;
+    border-radius: 12px;
+    height: 500px;
+    padding: 10px;
+    width: 250px;
+    float: left;
+    margin: 5px;
+}
+
+.top-trumps-card-inner {
+    border-radius: 12px;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 0px 3px 1px #ebae1f;
+    background-color: #3d3c3a;
+}
+
+.card-title {
+    text-align: center;
+    font-family: Cooper;
+}
+
+.card-type {
+    color: #f2c51f;
+    text-align: center;
+    font-family: Cooper;
+}
+
+.table {
+    align-content: center;
+}
+
+.table-row {
+    background-color: #f2c51f;
+    border-top: 3px solid #262629;
+    border-bottom: 3px solid #262629;
+    padding: -0.25rem;
+    box-shadow: 0px 3px 3px 0px #0f044a;
+    font-family: Cooper;
+}
+
+.table td {
+    padding: 0rem;
+}
