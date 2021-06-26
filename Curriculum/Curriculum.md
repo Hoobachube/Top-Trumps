@@ -35,11 +35,28 @@
   - console application
   - WEB API
 
-## Q3 - JUL - SEP
+## JUL
 
-- CLOUD
-  - deploy our application
+AW/JD 
+  - Give more coursework style tasks and get more written responses.
+  - Continue to work on Top Trumps App.
+AW 
+  - Find an exam to work towards
+    - HTML/CSS/JS
+    - C#
+  - Demo what I am explaining.
+JD 
+  - Do pluralsight course on HTML/CSS/JS.
+  - REDO pluralsihgt IQ tests
+  - FIND C# book similar to SAMs SQL
+
+
+
+
+
+
+
 
 ## Q4 - OCT - DEC
 
-- WEBSITE
+
