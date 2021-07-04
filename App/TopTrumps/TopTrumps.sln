@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TopTrumps.WebApp", "TopTrum
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TopTrumps.Data.Tests", "TopTrumps.Data.Tests\TopTrumps.Data.Tests.csproj", "{3F58A72E-5D60-4CAD-87D1-DF4B40E8201B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopTrumps.Files", "TopTrumps.Files\TopTrumps.Files.csproj", "{A1E6AE78-620F-41FC-B2E7-0EDD750055D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TopTrumps.Files", "TopTrumps.Files\TopTrumps.Files.csproj", "{A1E6AE78-620F-41FC-B2E7-0EDD750055D7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{24E543A3-C27F-45E4-AB90-63448E54DD5C}"
 EndProject
