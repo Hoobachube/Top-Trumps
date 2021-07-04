@@ -1,4 +1,6 @@
-﻿namespace TopTrumps.Data.Services
+﻿using System;
+
+namespace TopTrumps.Data.Services
 {
     using System.Collections.Generic;
     using System.Threading;
@@ -35,9 +37,7 @@
 
         public async Task<IEnumerable<PlayersCard>> GetPlayersCollection(string email)
         {
-            return await _repo.QueryAsync<PlayersCard>(
-                _helper.GetCollectionSql(email), 
-                new CancellationToken(), new { email });
+            throw new Exception("JACK HASN'T FUCKING DONE THIS YET!!!!!!!");
         }
 
         public async Task<int> CreateNewCard(Card card)

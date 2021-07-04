@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  sql-server-db:
+    container_name: sql-server-db
+    image: microsoft/mssql-server-linux:2017-latest
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "dce01587-6dcb-48ae-a9c7-9b9905eec3bd"
+      ACCEPT_EULA: "Y"
