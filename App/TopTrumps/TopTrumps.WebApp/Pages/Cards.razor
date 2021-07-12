@@ -21,7 +21,7 @@
 <br />
 
 <div class="row">
-    @foreach (var card in _cards)
+    @foreach (var card in _cardsCollection)
     {
         <CardComponent Card="card" />
     }
@@ -29,10 +29,10 @@
 
 @code
 {
-    private IEnumerable<Card> _cards = new List<Card>();
+    private List<Card> _cardsCollection = new List<Card>();
 
     protected override async Task OnInitializedAsync()
     {
-        _cards = await CardsService.GetAllCards();
+        _cardsCollection = (await CardsService.GetAllCards()).ToList();
     }
 }

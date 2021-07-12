@@ -1,3 +1,5 @@
+using TopTrumps.Data.Services;
+
 namespace TopTrumps.WebApp
 {
     using Areas.Identity;

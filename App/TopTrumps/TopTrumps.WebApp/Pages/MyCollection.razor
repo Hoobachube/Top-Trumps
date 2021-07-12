@@ -1,27 +1,27 @@
 ﻿@page "/my-collection"
+
 @using TopTrumps.Data.DTOs
 @using TopTrumps.WebApp.Components
+@using System.Data.SqlClient
+@using Dapper
+@using TopTrumps.Data.Services
+
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
 <h3>My Collection</h3>
 
 <div class="row">
-    @foreach (var card in _cards)
+    @foreach (var card in _cardsCollection)
     {
         <CardComponent Card="card" />
     }
 </div>
 
 @code {
-    private IEnumerable<Card> _cards = new List<Card>();
+    private List<Card> _cardsCollection = new List<Card>();
 
     protected override void OnInitialized()
     {
-        // get cards from database
-        _cards = new List<Card>
-    {
-            new Card {Name = "Jack"},
-            new Card {Name = "Alan"},
-            new Card {Name = "Alex"}
-        };
+       _cardsCollection = // TODO:
     }
 }
