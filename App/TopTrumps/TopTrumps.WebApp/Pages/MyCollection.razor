@@ -1,7 +1,27 @@
 ﻿@page "/my-collection"
+@using TopTrumps.Data.DTOs
+@using TopTrumps.WebApp.Components
 
 <h3>My Collection</h3>
 
-@code {
+<div class="row">
+    @foreach (var card in _cards)
+    {
+        <CardComponent Card="card" />
+    }
+</div>
 
+@code {
+    private IEnumerable<Card> _cards = new List<Card>();
+
+    protected override void OnInitialized()
+    {
+        // get cards from database
+        _cards = new List<Card>
+    {
+            new Card {Name = "Jack"},
+            new Card {Name = "Alan"},
+            new Card {Name = "Alex"}
+        };
+    }
 }

@@ -25,25 +25,6 @@ namespace TopTrumps.Data.Helpers
                         INSERT INTO [UsersVsRoles]([UserId], [RoleId]) VALUES(@userId, @{nameof(role.Id)})";
         }
 
-        public string GetCollectionSql(string email)
-        {
-            return $@"SELECT 
-	                    C.[Id],
-	                    C.[Name],
-	                    C.[Type],
-	                    C.[ABV],
-	                    C.[Accessibility],
-	                    C.[Reputation],
-	                    C.[Popularity],
-	                    C.[Description],
-                        C.[ImageUrl],
-	                    CT.[InDeck]
-                    FROM [dbo].[Collection] CT
-                    JOIN [dbo].[Cards] C ON CT.CardId = C.Id
-                    JOIN [dbo].[Users] U ON CT.UserId = U.Id
-                    WHERE U.[Email] = @{nameof(email)}";
-        }
-
         public string GetCreateUsersSql()
         {
             return $@"INSERT INTO [Users] 

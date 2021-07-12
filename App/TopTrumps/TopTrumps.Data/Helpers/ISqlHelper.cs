@@ -8,7 +8,7 @@
 
         string GetAllCardsQuery();
 
-        string GetCollectionSql(string email);
+        //string GetCollectionSql(string email);
 
         string GetCreateUsersSql();
 
