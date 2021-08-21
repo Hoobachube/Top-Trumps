@@ -40,6 +40,7 @@ namespace TopTrumps.WebApp
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<User>>();
 
             services.AddScoped<IFileService, AwsS3FileService>();
+            services.AddHttpContextAccessor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

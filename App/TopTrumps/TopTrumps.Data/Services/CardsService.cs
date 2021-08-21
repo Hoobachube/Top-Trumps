@@ -37,7 +37,11 @@ namespace TopTrumps.Data.Services
 
         public async Task<IEnumerable<PlayersCard>> GetPlayersCollection(string email)
         {
-            throw new Exception("JACK HASN'T FUCKING DONE THIS YET!!!!!!!");
+            return await _repo.QueryAsync<PlayersCard>(
+                _helper.GetPlayersCollectionSql(email),
+                new CancellationToken(),
+                new { email });
+
         }
 
         public async Task<int> CreateNewCard(Card card)

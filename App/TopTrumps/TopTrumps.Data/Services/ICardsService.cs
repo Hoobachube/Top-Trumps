@@ -10,7 +10,7 @@
 
         Task<IEnumerable<Card>> GetAllCards();
 
-        // Task<IEnumerable<PlayersCard>> GetPlayersCollection(string email);
+        Task<IEnumerable<PlayersCard>> GetPlayersCollection(string email);
 
         Task<int> CreateNewCard(Card card);
 

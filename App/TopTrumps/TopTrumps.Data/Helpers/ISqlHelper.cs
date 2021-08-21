@@ -8,7 +8,7 @@
 
         string GetAllCardsQuery();
 
-        //string GetCollectionSql(string email);
+        string GetPlayersCollectionSql(string email);
 
         string GetCreateUsersSql();
 
@@ -17,5 +17,6 @@
         string CreateNewCardSql();
 
         string GetUpdateCardSql();
+
     }
 }

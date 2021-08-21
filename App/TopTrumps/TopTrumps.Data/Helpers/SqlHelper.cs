@@ -85,5 +85,27 @@ namespace TopTrumps.Data.Helpers
                 [ImageUrl] = @{nameof(Card.ImageUrl)}
                 WHERE [Id] = @{nameof(Card.Id)}";
         }
+
+        public string GetPlayersCollectionSql(string email)
+        {
+            return $@"select  [Email]
+                            ,[userid]
+                            ,[cardid] as id
+                            ,[name]
+                            ,[Type]
+                            ,[ABV]
+                            ,[Accessibility]
+                            ,[Reputation]
+                            ,[Popularity]
+                            ,[Description]
+                            ,[ImageUrl]
+                      FROM   [Users]
+                            ,[Collection]
+                            ,[cards]
+                      WHERE users.id = Collection.userid
+                      and Collection.cardid = cards.id
+                      and email = @{nameof(email)}
+                      ";
+        }
     }
 }
