@@ -1,6 +1,7 @@
 namespace TopTrumps.WebApp
 {
     using Areas.Identity;
+    using Blazored.Modal;
     using Blazored.Toast;
     using Data.DTOs;
     using Data.IOC;
@@ -36,6 +37,7 @@ namespace TopTrumps.WebApp
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<User>>();
+            services.AddBlazoredModal();
 
             services.AddScoped<IFileService, AwsS3FileService>();
         }

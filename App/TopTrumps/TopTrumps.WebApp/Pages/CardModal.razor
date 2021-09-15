@@ -1,0 +1,11 @@
+﻿@page "/CardModal"
+
+<h3>CardModal</h3>
+
+@inject ModalService modal
+
+<button @onclick="@(()=> modal.Show<Cards>("Card Description"))" class="btn btn-primary">View</button>
+
+@code {
+
+}

@@ -1,8 +1,10 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
+    font-family: Cooper;
+    background-image: url('file:\\\C:/Users/dacht/source/repos/Source/Top-Trumps/Design/toptrumps-front-page.jpg');
+ 
+    }
 
 a, .btn-link {
     color: #0366d6;
@@ -24,15 +26,18 @@ app {
     height: 3.5rem;
     display: flex;
     align-items: center;
+    
 }
 
 .main {
     flex: 1;
+   
 }
 
     .main .top-row {
-        background-color: #f7f7f7;
-        border-bottom: 1px solid #d6d5d5;
+        background-color: #3d3c3a;
+        border-bottom: 2px solid #ebae1f;
+        border-top: 2px solid #ebae1f;
         justify-content: flex-end;
     }
 
@@ -47,11 +52,17 @@ app {
         }
 
 .sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    border-left: 2px solid #ebae1f;
+    box-shadow: 0px 0px 3px 1px #ebae1f;
+    background-color: #3d3c3a;
+    //background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+
 }
 
     .sidebar .top-row {
         background-color: rgba(0,0,0,0.4);
+        border-top: 2px solid #ebae1f;
+        
     }
 
     .sidebar .navbar-brand {
