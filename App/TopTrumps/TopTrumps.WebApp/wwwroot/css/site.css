@@ -1,7 +1,7 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html, body {
-    font-family: Cooper;
+    font-family: Arial, Helvetica, sans-serif;
     background-image: url('file:\\\C:/Users/dacht/source/repos/Source/Top-Trumps/Design/toptrumps-front-page.jpg');
  
     }
@@ -225,10 +225,6 @@ app {
     text-overflow: ellipsis;
 }
 
-    .truncate:hover {
-        overflow: visible;
-        text-wrap: initial;
-    }
 
 .top-trumps-card {
     background-color: #2b2b2b;
@@ -250,7 +246,7 @@ app {
 
 .card-title {
     text-align: center;
-    font-family: Cooper;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .card-type {
@@ -276,12 +272,58 @@ app {
     padding: 0rem;
 }
 
+
+.btn-view-card {
+    background-color: #f2c51f;
+    border-radius: 12px;
+    margin-left: 57px;
+    border: 2px solid black;
+    font-family: Cooper;
+}
+
+.btn-edit-card {
+
+    border-radius: 12px;
+    color: white;
+}
+
 .modal-top-trumps-card {
     background-color: #2b2b2b;
     border-radius: 12px;
-    height: 500px;
+    height: 850px;
     padding: 10px;
-    width: 250px;
+    width: 427px;
     float: left;
     margin: 5px;
+}
+
+.modal-card-title {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+}
+
+.modal-card-type {
+    color: #f2c51f;
+    text-align: center;
+    font-family: Cooper;
+    font-size: 30px;
+}
+
+.modal-card-description {
+    border: 2px solid black;
+    text-align: center;
+    color: white;
+    line-height: 1.2em;
+    font-size: 22px;
+}
+.modal-table-row {
+    background-color: #f2c51f;
+    border-top: 3px solid #262629;
+    border-bottom: 3px solid #262629;
+    padding: -0.25rem;
+    padding-left: 15px;
+    box-shadow: 0px 3px 3px 0px #0f044a;
+    font-family: Cooper;
+    font-size: 24px;
 }

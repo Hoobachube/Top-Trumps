@@ -55,10 +55,10 @@
                 </table>
                 <p class="card-description truncate">@card.Description</p>
 
-                <button @onclick="@(() => ShowModal(card.Id))" class="btn btn-primary">View Card</button>
+                <button @onclick="@(() => ShowModal(card.Id))" class="btn btn-view-card">View Card</button>
 
 
-                <NavLink class="btn btn-primary" href=@{$"cards/{card.Id}"}>
+                <NavLink class="btn btn-edit-card" href=@{$"cards/{card.Id}"}>
                     Edit
                 </NavLink>
             </div>
