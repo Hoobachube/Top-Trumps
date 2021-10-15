@@ -40,8 +40,9 @@
                 </tr>
             </table>
             <p class="modal-card-description">@_card.Description</p>
-
-
+            <NavLink class="btn btn-edit-card" href=@{$"cards/{_card.Id}"}>
+                Edit
+            </NavLink>
         </div>
 
 
