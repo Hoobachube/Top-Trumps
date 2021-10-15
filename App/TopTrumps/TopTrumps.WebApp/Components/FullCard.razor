@@ -1,4 +1,4 @@
-﻿
+﻿@page "/fullCard"
 @using TopTrumps.Data.DTOs
 @using TopTrumps.Data.Services
 @using TopTrumps.WebApp.Components
@@ -6,6 +6,7 @@
 
 @inject ICardsService _cardsService
 
+@attribute [Authorize(Roles = "Admin")]
 
 
 <div class="row">
@@ -40,7 +41,9 @@
             </table>
             <p class="modal-card-description">@_card.Description</p>
 
+
         </div>
+
 
     </div>
 
