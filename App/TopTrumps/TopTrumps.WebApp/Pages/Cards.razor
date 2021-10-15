@@ -1,6 +1,8 @@
 ﻿@page "/cards"
 @using TopTrumps.Data.DTOs
 @using TopTrumps.Data.Services
+@using TopTrumps.WebApp.Components
+
 
 @inject ICardsService _cardsService
 
@@ -9,6 +11,8 @@
 <h3>
     Cards
 </h3>
+
+
 
 <div class="row">
     <div class="col-12">
@@ -23,15 +27,11 @@
 <div class="row">
     @foreach (var card in _cards)
     {
-
-
-        <div class="top-trumps-card">
+        <div @onclick="@(() => ShowModal(card.Id))" class="top-trumps-card">
             <div class="top-trumps-card-inner">
                 <div style="background: url(@card.ImageUrl) no-repeat; background-size: contain; width: 100%; height: 50%; border-radius: 12px;">
-                    <h4 class="card-title">@card.Name</h4>
-
                 </div>
-
+                <h4 class="card-title">@card.Name</h4>
                 <h5 class="card-type">@card.Type</h5>
                 <table class="table">
                     <tr class="table-row">
@@ -51,54 +51,30 @@
                         <td>@card.Popularity</td>
                     </tr>
                 </table>
-                <p class="card-description truncate">@card.Description</p>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#top-trumps-card">
-                    View Card
-                </button>
-                <NavLink class="btn btn-primary" href=@{$"cards/{card.Id}"}>
-                    Edit
-                </NavLink>
             </div>
-
         </div>
-
-        @*<div class="col-sm-4 col-md-3 mb-2">
-                <div class="card border-dark mb-3 card-border">
-                    <div class="card text-center card-color">
-                        <div class="card text-black card-color mb-3">
-                            <img class="card-img-top" src="@card.ImageUrl" alt="Card image cap" width="35" height="150">
-
-                            <div class="card-body">
-                                <h4 class="card-title">@card.Name</h4>
-                                <h5 class="card-type">@card.Type</h5>
-                                <p><h6 class="card-text">ABV = @card.ABV</h6></p>
-                                <p><h6 class="card-text">ACCESSIBILITY = @card.Accessibility</h6></p>
-                                <p><h6 class="card-text">REPUTATION = @card.Reputation</h6></p>
-                                <p><h6 class="card-text">POPULARITY = @card.Popularity</h6></p>
-                                <p class="card-description">@card.Description</p>
-                                <NavLink class="btn btn-primary" href=@{$"cards/{card.Id}"}>
-                                    Edit
-                                </NavLink>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>*@
     }
 </div>
 
 
-
-
-
-
-
 @code
 {
+        [CascadingParameter] public IModalService ModalService { get; set; }
+
     private IEnumerable<Card> _cards = new List<Card>();
 
     protected override async Task OnInitializedAsync()
     {
         _cards = await _cardsService.GetAllCards();
     }
+
+    async Task ShowModal(int cardId)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(cardId), cardId);
+
+        ModalService.Show<FullCard>("My Card", parameters);
+
+    }
+
 }

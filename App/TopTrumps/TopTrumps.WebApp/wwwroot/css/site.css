@@ -1,8 +1,10 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('file:\\\C:/Users/dacht/source/repos/Source/Top-Trumps/Design/toptrumps-front-page.jpg');
+ 
+    }
 
 a, .btn-link {
     color: #0366d6;
@@ -10,9 +12,16 @@ a, .btn-link {
 
 .btn-primary {
     color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    background-color: #2b2b2b;
+    border: 4px solid black;
+    border-color: #f2c51f;
+    border-radius: 12px;
 }
+    .btn-primary:hover {
+        background-color: #f2c51f;
+        border-color: #2b2b2b;
+        color: #2b2b2b;
+    }
 
 app {
     position: relative;
@@ -24,21 +33,25 @@ app {
     height: 3.5rem;
     display: flex;
     align-items: center;
+    
 }
 
 .main {
     flex: 1;
+   
 }
 
     .main .top-row {
-        background-color: #f7f7f7;
-        border-bottom: 1px solid #d6d5d5;
+        background-color: #3d3c3a;
+        border-bottom: 2px solid #ebae1f;
+        border-top: 2px solid #ebae1f;
         justify-content: flex-end;
     }
 
         .main .top-row > a, .main .top-row .btn-link {
             white-space: nowrap;
             margin-left: 1.5rem;
+            color: #f2c51f;
         }
 
         .main .top-row a:first-child {
@@ -47,11 +60,17 @@ app {
         }
 
 .sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    border-left: 2px solid #ebae1f;
+    box-shadow: 0px 0px 3px 1px #ebae1f;
+    background-color: #3d3c3a;
+    //background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+
 }
 
     .sidebar .top-row {
         background-color: rgba(0,0,0,0.4);
+        border-top: 2px solid #ebae1f;
+        
     }
 
     .sidebar .navbar-brand {
@@ -208,17 +227,6 @@ app {
     line-height: 1.2em;
 }
 
-.truncate {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-    .truncate:hover {
-        overflow: visible;
-        text-wrap: initial;
-    }
-
 .top-trumps-card {
     background-color: #2b2b2b;
     border-radius: 12px;
@@ -227,7 +235,15 @@ app {
     width: 250px;
     float: left;
     margin: 5px;
+
 }
+
+    .top-trumps-card:hover {
+        background-color: #f2c51f;
+        border-color: #2b2b2b;
+        box-shadow: 0px 3px 3px 0px #0f044a;
+        cursor: pointer;
+    }
 
 .top-trumps-card-inner {
     border-radius: 12px;
@@ -238,6 +254,8 @@ app {
 }
 
 .card-title {
+    text-align: center;
+    color: #f2c51f;
     text-align: center;
     font-family: Cooper;
 }
@@ -263,4 +281,62 @@ app {
 
 .table td {
     padding: 0rem;
+}
+
+.table-row td {
+    padding-left: 0.5rem;
+}
+
+
+.btn-edit-card {
+
+    border-radius: 12px;
+    color: white;
+}
+
+.modal-top-trumps-card {
+    background-color: #2b2b2b;
+    border-radius: 12px;
+    height: 850px;
+    padding: 10px;
+    width: 427px;
+    float: left;
+    margin: 5px;
+}
+
+.modal-card-title {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+}
+
+.modal-card-type {
+    color: #f2c51f;
+    text-align: center;
+    font-family: Cooper;
+    font-size: 30px;
+}
+
+.modal-card-description {
+    border: 2px solid black;
+    text-align: center;
+    color: white;
+    line-height: 1.2em;
+    font-size: 22px;
+}
+.modal-table-row {
+    background-color: #f2c51f;
+    border-top: 3px solid #262629;
+    border-bottom: 3px solid #262629;
+    padding: -0.25rem;
+    padding-left: 15px;
+    box-shadow: 0px 3px 3px 0px #0f044a;
+    font-family: Cooper;
+    font-size: 24px;
+}
+
+.SearchBar {
+    overflow: hidden;
+    background-color: #e9e9e9;
+    width: 100%;
 }

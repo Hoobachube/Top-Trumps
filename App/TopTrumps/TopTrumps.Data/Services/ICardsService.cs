@@ -15,5 +15,7 @@
         Task<int> CreateNewCard(Card card);
 
         Task<Card> UpdateCard(Card card);
+
+
     }
 }
