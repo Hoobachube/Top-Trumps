@@ -63,8 +63,6 @@ app {
     border-left: 2px solid #ebae1f;
     box-shadow: 0px 0px 3px 1px #ebae1f;
     background-color: #3d3c3a;
-    //background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
-
 }
 
     .sidebar .top-row {
@@ -239,9 +237,9 @@ app {
 }
 
     .top-trumps-card:hover {
-        background-color: #f2c51f;
+        background-color: #2b2b2b;
         border-color: #2b2b2b;
-        box-shadow: 0px 3px 3px 0px #0f044a;
+        box-shadow: 5px 10px #888888;
         cursor: pointer;
     }
 
@@ -258,6 +256,11 @@ app {
     color: #f2c51f;
     text-align: center;
     font-family: Cooper;
+    -webkit-text-stroke: 2px black;
+}
+
+hr.title {
+    border: 1px solid black;
 }
 
 .card-type {
