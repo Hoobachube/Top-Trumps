@@ -12,4 +12,10 @@
 
 @code {
 
+    private IEnumerable<User> _Users = new List<User>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _usersService = await IUsersService.GetAllUsers();
+    }
 }

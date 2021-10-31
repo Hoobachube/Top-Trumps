@@ -6,7 +6,7 @@
     {
         string GetCardQuery(int id);
 
-        string GetAllCardsQuery();
+        string GetAllUsersQuery();
 
         string GetCollectionSql(string email);
 
@@ -17,5 +17,7 @@
         string CreateNewCardSql();
 
         string GetUpdateCardSql();
+
+        string GetAllUsersSql();
     }
 }

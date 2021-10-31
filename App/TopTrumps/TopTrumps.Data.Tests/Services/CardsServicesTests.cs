@@ -64,7 +64,7 @@ namespace TopTrumps.Data.Tests.Services
             const string sql = "SELECT";
             var expected = new List<Card> { new Card() };
 
-            _helper.Setup(x => x.GetAllCardsQuery())
+            _helper.Setup(x => x.GetAllUsersQuery())
                 .Returns(sql);
 
             _repo.Setup(x => x.QueryAsync<Card>(sql, It.IsAny<CancellationToken>(), null))

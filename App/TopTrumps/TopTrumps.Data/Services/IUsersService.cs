@@ -9,5 +9,7 @@
         Task<User> GetUser(int id);
 
         Task<IEnumerable<User>> GetUsers();
+
+        Task<User> GetAllUsers();
     }
 }
