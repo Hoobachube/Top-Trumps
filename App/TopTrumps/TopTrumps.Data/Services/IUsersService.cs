@@ -6,5 +6,8 @@
 
     public interface IUsersService
     {
+        Task<User> GetUser(int id);
+
+        Task<IEnumerable<User>> GetUsers();
     }
 }

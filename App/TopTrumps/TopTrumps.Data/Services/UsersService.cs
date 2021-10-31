@@ -19,7 +19,9 @@ namespace TopTrumps.Data.Services
         IUserPhoneNumberStore<User>,
         IUserTwoFactorStore<User>,
         IUserPasswordStore<User>,
-        IUserRoleStore<User>
+        IUserRoleStore<User>,
+        IUsersService
+
     {
         private readonly IRepository _repo;
         private readonly ISqlHelper _helper;
@@ -286,6 +288,16 @@ namespace TopTrumps.Data.Services
                     WHERE r.[NormalizedName] = @normalizedName",
                 cancellationToken,
                 new { normalizedName = roleName.ToUpper() })).ToList();
+        }
+
+        public Task<User> GetUser(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<User>> GetUsers()
+        {
+            throw new NotImplementedException();
         }
     }
 }
