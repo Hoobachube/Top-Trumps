@@ -303,7 +303,7 @@ namespace TopTrumps.Data.Services
         public async Task<IEnumerable<User>> GetAllUsers()
         {
             return await _repo.QueryAsync<User>(
-                _helper.GetAllUsersQuery(),
+                _helper.GetAllCardsQuery(),
                 new CancellationToken());
         }
 

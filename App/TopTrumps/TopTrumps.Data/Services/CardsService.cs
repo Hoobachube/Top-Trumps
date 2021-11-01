@@ -31,7 +31,7 @@ namespace TopTrumps.Data.Services
         public async Task<IEnumerable<Card>> GetAllCards()
         {
             return await _repo.QueryAsync<Card>(
-                _helper.GetAllUsersQuery(), 
+                _helper.GetAllCardsQuery(), 
                 new CancellationToken());
         }
 

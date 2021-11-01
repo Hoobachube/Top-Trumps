@@ -6,7 +6,7 @@
     {
         string GetCardQuery(int id);
 
-        string GetAllUsersQuery();
+        string GetAllCardsQuery();
 
         string GetCollectionSql(string email);
 

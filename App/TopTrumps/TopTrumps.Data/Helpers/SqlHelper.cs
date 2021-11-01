@@ -11,7 +11,7 @@ namespace TopTrumps.Data.Helpers
             return $@"SELECT * FROM [Cards] WHERE [Id] = @{nameof(id)}";
         }
 
-        public string GetAllUsersQuery()
+        public string GetAllCardssQuery()
         {
             return @"SELECT * FROM [Cards]";
         }
@@ -112,6 +112,11 @@ namespace TopTrumps.Data.Helpers
         }
 
         public string GetAllUsersSql()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public string GetAllCardsQuery()
         {
             throw new System.NotImplementedException();
         }
