@@ -295,21 +295,12 @@ namespace TopTrumps.Data.Services
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<User>> GetUsers()
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<IEnumerable<User>> GetAllUsers()
         {
             return await _repo.QueryAsync<User>(
-                _helper.GetAllCardsQuery(),
+                _helper.GetAllUsersQuery(),
                 new CancellationToken());
         }
 
-        Task<User> IUsersService.GetAllUsers()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

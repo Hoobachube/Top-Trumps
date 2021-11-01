@@ -8,8 +8,7 @@
     {
         Task<User> GetUser(int id);
 
-        Task<IEnumerable<User>> GetUsers();
+        Task<IEnumerable<User>> GetAllUsers();
 
-        Task<User> GetAllUsers();
     }
 }

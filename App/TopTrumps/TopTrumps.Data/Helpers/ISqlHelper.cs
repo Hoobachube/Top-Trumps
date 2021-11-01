@@ -18,6 +18,6 @@
 
         string GetUpdateCardSql();
 
-        string GetAllUsersSql();
+        string GetAllUsersQuery();
     }
 }

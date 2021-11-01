@@ -10,12 +10,20 @@
 
 <h3>Users</h3>
 
+
+<div class="row">
+    @foreach (var user in _users)
+    {
+    <div>@user.UserName</div>
+    }
+</div>
+
 @code {
 
-    private IEnumerable<User> _Users = new List<User>();
+    private IEnumerable<User> _users = new List<User>();
 
     protected override async Task OnInitializedAsync()
     {
-        _usersService = await IUsersService.GetAllUsers();
+        _users = await _usersService.GetAllUsers();
     }
 }
