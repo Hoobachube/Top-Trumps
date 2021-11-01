@@ -104,5 +104,12 @@ namespace TopTrumps.Data.Helpers
                 [ImageUrl] = @{nameof(Card.ImageUrl)}
                 WHERE [Id] = @{nameof(Card.Id)}";
         }
+
+
+        public string GetAllUsersQuery()
+        {
+            return @"SELECT * FROM [Users]";
+        }
+
     }
 }

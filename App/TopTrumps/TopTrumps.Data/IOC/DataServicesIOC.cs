@@ -17,6 +17,7 @@ namespace TopTrumps.Data.IOC
             services.AddTransient<IUserStore<User>, UsersService>();
             services.AddTransient<IRoleStore<Role>, RolesService>();
             services.AddTransient<ISqlHelper, SqlHelper>();
+            services.AddTransient<IUsersService, UsersService>();
         }
     }
 }

@@ -17,5 +17,7 @@
         string CreateNewCardSql();
 
         string GetUpdateCardSql();
+
+        string GetAllUsersQuery();
     }
 }

@@ -1,0 +1,29 @@
+﻿@page "/users"
+@using TopTrumps.Data.DTOs
+@using TopTrumps.Data.Services
+@using TopTrumps.WebApp.Components
+
+
+@inject IUsersService _usersService
+
+@attribute [Authorize(Roles = "Admin")]
+
+<h3>Users</h3>
+
+
+<div class="row">
+    @foreach (var user in _users)
+    {
+    <div>@user.UserName</div>
+    }
+</div>
+
+@code {
+
+    private IEnumerable<User> _users = new List<User>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _users = await _usersService.GetAllUsers();
+    }
+}
